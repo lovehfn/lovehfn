@@ -1,0 +1,292 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<meta http-equiv="Content-Security-Policy" content="block-all-mixed-content">
+<html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" >
+		<title>LOVE</title>
+		<link type="text/css" rel="stylesheet" href="./css/default.css">
+		<script type="text/javascript" src="./js/jquery.min.js"></script>
+		<script type="text/javascript" src="./js/jscex.min.js"></script>
+		<script type="text/javascript" src="./js/jscex-parser.js"></script>
+		<script type="text/javascript" src="./js/jscex-jit.js"></script>
+		<script type="text/javascript" src="./js/jscex-builderbase.min.js"></script>
+		<script type="text/javascript" src="./js/jscex-async.min.js"></script>
+		<script type="text/javascript" src="./js/jscex-async-powerpack.min.js"></script>
+		<script type="text/javascript" src="./js/functions.js" charset="utf-8"></script>
+		<script type="text/javascript" src="./js/love.js" charset="utf-8"></script>
+		<style type="text/css">.STYLE1 { color: #FF3030; }</style>
+		<style type="text/css">.STYLE2 { color: #FF3030; font-family:"楷体"; font-size:24px; font-weight:bold; }</style>
+		<style type="text/css">.STYLE3 { color: #FF3030; font-family:"楷体"; font-size:20px; }</style>
+		<style type="text/css">.STYLE4 { color: #FF3030; font-family:"楷体"; font-size:18px; }</style>
+		<link rel="shortcut icon" href="favicon.ico"></head>
+<body>
+		<audio id=BGM autoplay="autopaly" loop="loop">
+			<source src="https://cdn.mmnn.me/music/C.mp3" type="audio/mp3" />
+		</audio>
+		<script>
+			function audioAutoPlay(id){
+				var audio = document.getElementById(id),play = function() {
+				audio.play();
+				document.removeEventListener("touchstart",play, false);
+				};
+				audio.play();
+				document.addEventListener("WeixinJSBridgeReady", function () {
+				play();
+				}, false);
+				document.addEventListener('YixinJSBridgeReady', function() {
+				play();
+				}, false);
+				document.addEventListener("touchstart",play, false);
+			}
+			audioAutoPlay('BGM');
+		</script>
+        <div id="main">
+            <div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌Chrome或者火狐浏览器，或者其他游览器的最新版本。</div>
+            <div id="wrap">
+                <div id="text">
+                    <div id="code">
+                        <span class="say"><span class="STYLE2">LOVE</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">1</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">2</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">3</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">4</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">5</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">2018</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">不忘初心</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="STYLE3">逐梦前行</span></span><br>
+                        <span class="say"> </span><br>
+                        <span class="say"><span class="space"></span><span class="STYLE2">--给自己的2018</span></span><br>
+                        <span class="say"> </span>
+                        <span class="say"><span class="space"></span><span class="STYLE4"> --Saint-- </span></span>
+                        <span class="say"><span class="space"></span><span class="STYLE4"> 2018年01月04日</span></span>
+                    </div>
+                </div>
+                    <div id="clock-box">
+                        <span style="font-family:'楷体'" class="STYLE1">Name</span><span class="STYLE1">与</span> <span style="font-family:'楷体'" class="STYLE1">Name</span> <span class="STYLE1">已经相识了</span>
+                    <div id="clock" class="STYLE1"></div>
+                    </div>
+                    <canvas id="canvas" width="1100" height="680"></canvas>                         
+            </div>
+        </div>
+    <script>
+    (function(){
+        var canvas = $('#canvas');
+		
+        if (!canvas[0].getContext) {
+            $("#error").show();
+            return false;
+        }
+
+        var width = canvas.width();
+        var height = canvas.height();
+        
+        canvas.attr("width", width);
+        canvas.attr("height", height);
+
+        var opts = {
+            seed: {
+                x: width / 2 - 20,
+                color: "rgb(190, 26, 37)",
+                scale: 2
+            },
+            branch: [
+                [535, 680, 570, 250, 500, 200, 30, 100, [
+                    [540, 500, 455, 417, 340, 400, 13, 100, [
+                        [450, 435, 434, 430, 394, 395, 2, 40]
+                    ]],
+                    [550, 445, 600, 356, 680, 345, 12, 100, [
+                        [578, 400, 648, 409, 661, 426, 3, 80]
+                    ]],
+                    [539, 281, 537, 248, 534, 217, 3, 40],
+                    [546, 397, 413, 247, 328, 244, 9, 80, [
+                        [427, 286, 383, 253, 371, 205, 2, 40],
+                        [498, 345, 435, 315, 395, 330, 4, 60]
+                    ]],
+                    [546, 357, 608, 252, 678, 221, 6, 100, [
+                        [590, 293, 646, 277, 648, 271, 2, 80]
+                    ]]
+                ]] 
+            ],
+            bloom: {
+                num: 700,
+                width: 1080,
+                height: 650,
+            },
+            footer: {
+                width: 1200,
+                height: 5,
+                speed: 10,
+            }
+        }
+
+        var tree = new Tree(canvas[0], width, height, opts);
+        var seed = tree.seed;
+        var foot = tree.footer;
+        var hold = 1;
+
+        canvas.click(function(e) {
+            var offset = canvas.offset(), x, y;
+            x = e.pageX - offset.left;
+            y = e.pageY - offset.top;
+            if (seed.hover(x, y)) {
+                hold = 0; 
+                canvas.unbind("click");
+                canvas.unbind("mousemove");
+                canvas.removeClass('hand');
+            }
+        }).mousemove(function(e){
+            var offset = canvas.offset(), x, y;
+            x = e.pageX - offset.left;
+            y = e.pageY - offset.top;
+            canvas.toggleClass('hand', seed.hover(x, y));
+        });
+
+        var seedAnimate = eval(Jscex.compile("async", function () {
+            seed.draw();
+            while (hold) {
+                $await(Jscex.Async.sleep(10));
+            }
+            while (seed.canScale()) {
+                seed.scale(0.95);
+                $await(Jscex.Async.sleep(10));
+            }
+            while (seed.canMove()) {
+                seed.move(0, 2);
+                foot.draw();
+                $await(Jscex.Async.sleep(10));
+            }
+        }));
+
+        var growAnimate = eval(Jscex.compile("async", function () {
+            do {
+    	        tree.grow();
+                $await(Jscex.Async.sleep(10));
+            } while (tree.canGrow());
+        }));
+
+        var flowAnimate = eval(Jscex.compile("async", function () {
+            do {
+    	        tree.flower(2);
+                $await(Jscex.Async.sleep(10));
+            } while (tree.canFlower());
+        }));
+
+        var moveAnimate = eval(Jscex.compile("async", function () {
+            tree.snapshot("p1", 240, 0, 610, 680);
+            while (tree.move("p1", 500, 0)) {
+                foot.draw();
+                $await(Jscex.Async.sleep(10));
+            }
+            foot.draw();
+            tree.snapshot("p2", 500, 0, 610, 680);
+
+            // 会有闪烁不得意这样做, (＞﹏＜)
+            canvas.parent().css("background", "url(" + tree.toDataURL('image/png') + ")");
+            canvas.css("background", "#ffe");
+            $await(Jscex.Async.sleep(300));
+            canvas.css("background", "none");
+        }));
+
+        var jumpAnimate = eval(Jscex.compile("async", function () {
+            var ctx = tree.ctx;
+            while (true) {
+                tree.ctx.clearRect(0, 0, width, height);
+                tree.jump();
+                foot.draw();
+                $await(Jscex.Async.sleep(25));
+            }
+        }));
+
+        var textAnimate = eval(Jscex.compile("async", function () {
+		    var together = new Date();
+		    together.setFullYear(2009, 02, -21); 			//时间年月日
+		    together.setHours(0);						//小时	
+		    together.setMinutes(00);					//分钟
+		    together.setSeconds(0);					//秒前一位
+		    together.setMilliseconds(0);				//秒第二位
+
+		    $("#code").show().typewriter();
+            $("#clock-box").fadeIn(500);
+            while (true) {
+                timeElapse(together);
+                $await(Jscex.Async.sleep(1000));
+            }
+        }));
+
+        var runAsync = eval(Jscex.compile("async", function () {
+            $await(seedAnimate());
+            $await(growAnimate());
+            $await(flowAnimate());
+            $await(moveAnimate());
+
+            textAnimate().start();
+
+            $await(jumpAnimate());
+        }));
+
+        runAsync().start();
+    })();
+    </script>
+<!--
+	<link rel="stylesheet" href="./css/ad.css"></link >
+	
+	<script type="text/javascript" src="./js/floatingAd.js"></script>
+	<script type="text/javascript">
+	$(function(){
+		$.floatingAd({
+			//频率
+			delay: 10,
+			//超链接后是否关闭漂浮
+			isLinkClosed: false,
+			//漂浮内容
+			ad:	[{
+				//关闭区域背景透明度(0.1-1)
+				headFilter: 0.3,
+				//图片
+				'img': 'images/1.png',
+				//图片高度
+				'imgHeight': 66,
+				//图片宽度
+				'imgWidth': 300,
+				//图片链接
+				'linkUrl': '',
+				//浮动层级别
+				'z-index': 100,
+				//标题
+				'title': 'logo1',
+				'closed-icon': 'image/close.png'
+			},
+			{
+				'img': 'images/2.png',
+				'imgHeight': 66,
+				'imgWidth': 300,
+				'linkUrl': '',
+				'z-index': 100,
+				'title': 'logo2',
+				//关闭按键图片
+				'closed-icon': 'image/close.png'
+			}],
+			//关闭事件
+			onClose: function(elem){
+				//alert('关闭');
+			}
+		});
+		$("#aa").floatingAd({
+			onClose: function(elem){
+			}
+		});
+	});
+	</script>
+-->
+	<div style="display:none">
+	<script src="" language="JavaScript"></script>
+	</div>
+</body>
+<div id="footer"><a href="http://www.miibeian.gov.cn" target="_blank" rel="nofollow">苏ICP备14022187号</a></div>
+</html>
